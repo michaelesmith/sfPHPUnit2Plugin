@@ -14,8 +14,6 @@ class sfPHPUnitUser extends myUser
 
     public function hasCredential($credential, $useAnd = true)
     {
-        file_put_contents('/var/www/synoffice/error.txt', var_export($credential, true));
-
         $this->logCredential($credential);
 
         return parent::hasCredential($credential, $useAnd);
