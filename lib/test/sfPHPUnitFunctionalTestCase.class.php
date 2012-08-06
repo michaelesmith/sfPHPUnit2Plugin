@@ -14,8 +14,16 @@ class sfPHPUnitFunctionalTestCase extends sfPHPUnitBaseFunctionalTestCase
     {
         parent::_start();
 
+        $lastTime = 0;
+        if(file_exists($log_file = sfConfig::get('sf_log_dir') . '/last_phpunit_time')){
+            $lastTime = file_get_contents($log_file);
+        }
+
         if(self::$first){
-            $this->reloadDB();
+            if(time() > $lastTime + 900){
+                $this->reloadDB();
+            }
+            file_put_contents($log_file, time());
             self::$first = false;
         }
 

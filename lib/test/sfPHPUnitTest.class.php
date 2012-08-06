@@ -282,7 +282,7 @@ class sfPHPUnitTest extends lime_test
     {
       // PHPUnit does not support a native output method,
       // so do a normal echo call here.
-      echo "\n# $msg";
+//      echo "\n# $msg";
     }
   }
 }
